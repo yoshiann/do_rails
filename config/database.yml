@@ -19,14 +19,14 @@ default: &default
 
 development:
   <<: *default
-  database: doc_rails_development
+  database: do_rails_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: doc_rails_test
+  database: do_rails_test
   host: <%= ENV.fetch("APP_DATABASE_HOST") { 'db' } %>
 
 
@@ -52,6 +52,6 @@ test:
 #
 production:
   <<: *default
-  database: doc_rails_production
-  username: doc_rails
-  password: <%= ENV['DOC_RAILS_DATABASE_PASSWORD'] %>
+  database: do_rails_production
+  username: do_rails
+  password: <%= ENV['DO_RAILS_DATABASE_PASSWORD'] %>
