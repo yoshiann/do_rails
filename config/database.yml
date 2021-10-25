@@ -28,8 +28,7 @@ test:
   <<: *default
   database: do_rails_test
   host: <%= ENV.fetch("APP_DATABASE_HOST") { 'db' } %>
-  password: password-test
-  user-name: root-test
+  password: password
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
