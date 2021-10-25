@@ -9,10 +9,10 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.7
-    working_directory: ~/doc_rails
+    working_directory: ~/do_rails
     steps:
       - checkout:
-          path: ~/doc_rails
+          path: ~/do_rails
       - ruby/install-deps
 
   test:
@@ -22,17 +22,17 @@ jobs:
         command: [--default-authentication-plugin=mysql_native_password]
         environment:
           MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: doc_rails_development
+          MYSQL_DATABASE: do_rails_development
           MYSQL_USER: root
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
       APP_DATABASE_HOST: "127.0.0.1"
       RAILS_ENV: test
-    working_directory: ~/doc_rails
+    working_directory: ~/do_rails
     steps:
       - checkout:
-          path: ~/doc_rails
+          path: ~/do_rails
       - ruby/install-deps
       - run:
           name: Database setup
@@ -49,7 +49,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - 7f:21:c0:20:2d:51:fe:50:eb:f4:31:19:27:12:e4:cc
-      - run: ssh $SSH_USER@$SSH_HOST 'cd /var/doc_rails && git pull origin main'
+      - run: ssh $SSH_USER@$SSH_HOST 'cd ~/do_rails && git pull origin main'
 
 workflows:
   version: 2
