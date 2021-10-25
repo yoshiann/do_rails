@@ -1,8 +1,8 @@
 version: '3'
 services:
   db:
-    build:
-      context: ./mysql
+    #build:
+    #  context: ./mysql
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: password
@@ -11,8 +11,8 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     volumes:
       - do_rails-mysql-data:/var/lib/mysql
-      - ./mysql/initdb.d:/docker-entrypoint-initdb.d
-      - ./mysql/conf.d:/etc/mysql/conf.d
+      #- ./mysql/initdb.d:/docker-entrypoint-initdb.d
+      #- ./mysql/conf.d:/etc/mysql/conf.d
     
   prod:
     build: .
