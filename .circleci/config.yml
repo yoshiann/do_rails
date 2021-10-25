@@ -48,7 +48,7 @@ jobs:
 #      - ckeckout
       - add_ssh_keys:
           fingerprints:
-            - "7f:21:c0:20:2d:51:fe:50:eb:f4:31:19:27:12:e4:cc"
+            - "e2:a1:33:ac:4e:4b:f0:70:c3:26:76:4a:4a:d5:b7:25:5c:bd:12:f6"
       - run: ssh ${SSH_USER}@${SSH_HOST}
 
 workflows:
