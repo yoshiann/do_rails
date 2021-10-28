@@ -44,7 +44,7 @@ services:
 volumes:
   #./mysql/initdb.d:
   #./mysql/conf.d:
-  do_rails-mysql-data:
+  do_rails2-mysql-data:
     driver: local
   public-data:
   tmp-data:
