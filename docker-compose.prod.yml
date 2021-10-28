@@ -8,11 +8,13 @@ services:
       MYSQL_ROOT_PASSWORD: password
     ports:
       - '3306:3306'
-    command: --default-authentication-plugin=mysql_native_password
+    command: mysqld --default-authentication-plugin=mysql_native_password
     volumes:
       - do_rails-mysql-data:/var/lib/mysql
       - ./mysql/initdb.d:/docker-entrypoint-initdb.d
       - ./mysql/conf.d:/etc/mysql/conf.d
+    depends_on:
+      - nginx
     
   prod:
     build: .
@@ -21,12 +23,13 @@ services:
       - public-data:/do_rails/public
       - tmp-data:/do_rails/tmp
       - log-data:/do_rails/log
-    depends_on:
-      - db
+    #depends_on:
+    #  - db
     stdin_open: true
     tty: true
     #command: bundle exec unicorn -c config/unicorn.rb
     command: bundle exec rails s
+
   nginx:
     build:
       context: ./nginx
@@ -37,10 +40,11 @@ services:
       - 80:80
     depends_on:
       - prod
+
 volumes:
   #./mysql/initdb.d:
   #./mysql/conf.d:
-  do_rails-mysql-data:
+  do_rails2-mysql-data:
     driver: local
   public-data:
   tmp-data:
